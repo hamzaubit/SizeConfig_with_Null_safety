@@ -6,6 +6,7 @@ import 'package:practice_app/widgets/sizeConfig.dart';
 import 'package:practice_app/widgets/widgets.dart';
 import 'package:http/http.dart' as http;
 
+import 'detailScreen.dart';
 import 'models/random_data.dart';
 
 class Home extends StatefulWidget {
@@ -23,7 +24,7 @@ class _HomeState extends State<Home> {
     this.fetchData();
   }
   fetchData() async {
-    var url = "https://randomuser.me/api/?results=6";
+    var url = "https://randomuser.me/api/?results=8";
     var response = await http.get(Uri.parse(url));
     if(response.statusCode == 200){
       var items = json.decode(response.body)["results"];
@@ -64,12 +65,13 @@ class _HomeState extends State<Home> {
     var username = index['name']['title'] +" "+ index['name']['first'] +" "+ index['name']['last'];
     var userEmail = index['email'];
     var userImage = index['picture']['medium'];
+    var age = index['dob']['date'];
     return GestureDetector(
       onTap: (){
-
+        Navigator.push(context, MaterialPageRoute(builder: (context) => detailScreen(username,userEmail,userImage,age)));
       },
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(9.0),
         child: Container(
           height: SizeConfig.screenHeight! * 0.09,
           width: SizeConfig.screenWidth! * 100,
