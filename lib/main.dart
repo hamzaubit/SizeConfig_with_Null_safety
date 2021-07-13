@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:practice_app/widgets/widgets.dart';
+import 'homeScreen.dart';
 void main() {
   runApp(MyApp());
 }
@@ -13,15 +14,11 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.indigo[900],
-          title: Text("Practice App",),
-        ),
-      ),
-    );
+          debugShowCheckedModeBanner: false,
+          home: Home(),
+        );
   }
 }
+
+
 
